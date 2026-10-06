@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unilib/Frontend/Login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
+<<<<<<< Updated upstream
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -117,6 +119,9 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
+=======
+      home: const LoginPage(),
+>>>>>>> Stashed changes
     );
   }
 }
