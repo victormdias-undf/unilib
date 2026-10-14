@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import  'Catalog/BibliotecaUniversidade/Catalog.dart';
+import 'Cadastro.dart';
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -27,7 +28,7 @@ class LoginPage extends StatelessWidget {
             Container(
               color: const Color(0xEAE8FFFF),
               width: double.infinity,
-              height:600,
+              height:650,
               padding: EdgeInsets.all(50),
               child: Column(
                 children: [
@@ -40,7 +41,7 @@ class LoginPage extends StatelessWidget {
                           Container(
                             width: 100,
                             height: 100,
-                            color: Colors.black,
+                            decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(30)),
                           ),
                           SizedBox(height:30),
                           Text("Bem-Vindo de volta!", style: TextStyle(fontWeight: FontWeight(500), fontSize: 20)),
@@ -51,7 +52,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     Container(
                       width: double.infinity,
-                      height: 300,
+                      height: 350,
                       child:Center(
                         child: Column(children: [
                           TextField(
@@ -67,6 +68,14 @@ class LoginPage extends StatelessWidget {
                               border:OutlineInputBorder()
                             ),
                           ),
+                          ElevatedButton(onPressed: (){
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BibliotecaPage(),));
+                            }, child: const Text("Esqueceu sua senha?"), style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xEAE8FFFF),
+                              foregroundColor: Color(0xFF8C6FFF),
+                              elevation: 0
+                            )
+                          ),
                           SizedBox(height:25),
                           Container(
                             width:double.infinity,
@@ -78,7 +87,15 @@ class LoginPage extends StatelessWidget {
                               foregroundColor: Colors.white
                             )
                             ),
-                            )  
+                            ),
+                            ElevatedButton(onPressed: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>const CadastroPage()));
+                            }, child: const Text("Novo? Cadastre-se!"), style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xEAE8FFFF),
+                              foregroundColor: Color(0xFF8C6FFF),
+                              elevation: 0
+                            )
+                          ), 
                           
                         ],)
                       )
