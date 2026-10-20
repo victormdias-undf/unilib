@@ -8,7 +8,7 @@ class BibliotecaPage extends StatelessWidget {
     const Color primaryColor = Color(0xFFD8D6FF);
     const Color secondaryColor = Color(0xFF6650A4);
     const Color placeholderColor = Color(0xFFA7A1A1);
-
+ 
     return Scaffold(
       backgroundColor: Colors.white,
 
@@ -195,7 +195,7 @@ class BibliotecaPage extends StatelessWidget {
           const SizedBox(height: 5),
 
           SizedBox(
-            height: 120,
+            height: 200,
 
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -206,24 +206,40 @@ class BibliotecaPage extends StatelessWidget {
               itemCount: 10,
 
               itemBuilder: (context, index) {
-                return Container(
-                  width: 74,
-                  height: 120,
-
-                  margin: const EdgeInsets.only(
-                    right: 16,
-                  ),
-
-                  decoration: BoxDecoration(
-                    color: placeholderColor,
-                    borderRadius: BorderRadius.zero,
-                  ),
-                );
+                return _item("assets/teste.jpeg", "item Legall", 1);
               },
             ),
           ),
         ],
       ),
+    );
+  }
+  Widget _item(String imagePath, String title, int id){
+    return SizedBox(
+      width: 150,
+      height: 200,
+      child:Padding(padding: EdgeInsetsGeometry.all(5),
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          color: Color.fromARGB(255, 170, 177, 179)
+        ),
+        child: Center(
+          child: Column(
+          children: [
+            Container(width: 150, height: 170, decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage(imagePath))
+              ),
+            ),
+            Text(title)
+            
+
+          ],
+        ),
+        )
+      ),
+      )
     );
   }
 }
