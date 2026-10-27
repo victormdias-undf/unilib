@@ -155,7 +155,7 @@ class _LoginPageState extends State<LoginPage>{
                     SizedBox(height:20),
                     SizedBox(width: 250,
                     height: 50,
-                    child:ElevatedButton(onPressed: camposValidos ? PegarDados : null, child: const Text("Entrar", style: TextStyle(color: Colors.white, fontWeight: FontWeight(700)),), style: ElevatedButton.styleFrom(
+                    child:ElevatedButton(onPressed:(){camposValidos ? Navigator.push(context, MaterialPageRoute(builder: (context) => const BibliotecaPage(),),) : null;}, child: const Text("Entrar", style: TextStyle(color: Colors.white, fontWeight: FontWeight(700)),), style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromRGBO(103, 80, 164, 1),
                       disabledBackgroundColor: Color.fromRGBO(126, 115, 159, 1),
                       disabledForegroundColor: Colors.white,

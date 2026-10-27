@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import  'Catalog/BibliotecaUniversidade/Catalog.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'Login.dart';
+import 'Catalog/BibliotecaUniversidade/Catalog.dart';
 class CadastroPage extends StatefulWidget {
   const CadastroPage({super.key});
    @override
@@ -16,13 +17,7 @@ class _CadastroPageState extends State<CadastroPage>{
   bool temLetra = false;
   bool temQuantidade = false;
   bool _showPass = false;
-  void PegarDados(){
-    String cpf = cpfController.text;
-    String pass = passController.text;
-    
-    print(cpf);
-    print(pass);
-  }
+
   void verificarSenha(String senha) {
   setState(() {
     temQuantidade = senha.length>=8;
@@ -181,7 +176,9 @@ class _CadastroPageState extends State<CadastroPage>{
                     SizedBox(height:10),
                     SizedBox(width: 250,
                     height: 50,
-                    child:ElevatedButton(onPressed: camposValidos ? PegarDados : null, child: const Text("Criar Conta", style: TextStyle(color: Colors.white, fontWeight: FontWeight(700)),), style: ElevatedButton.styleFrom(
+                    child:ElevatedButton(onPressed:(){camposValidos ? Navigator.push(context, MaterialPageRoute(builder: (context) => const BibliotecaPage(),),) : null;}, 
+                    child: const Text("Criar Conta", style: TextStyle(color: Colors.white, fontWeight: FontWeight(700)),), 
+                    style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromRGBO(103, 80, 164, 1),
                       disabledBackgroundColor: Color.fromRGBO(126, 115, 159, 1),
                       disabledForegroundColor: Colors.white,

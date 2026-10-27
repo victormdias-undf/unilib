@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'ProdutoEspec.dart';
+import '../../../Assets/produto.dart';
 class BibliotecaPage extends StatelessWidget {
   const BibliotecaPage({super.key});
 
@@ -8,7 +9,7 @@ class BibliotecaPage extends StatelessWidget {
     const Color primaryColor = Color(0xFFD8D6FF);
     const Color secondaryColor = Color(0xFF6650A4);
     const Color placeholderColor = Color(0xFFA7A1A1);
- 
+    const String titleFont = "Irish";
     return Scaffold(
       backgroundColor: Colors.white,
 
@@ -17,11 +18,12 @@ class BibliotecaPage extends StatelessWidget {
         elevation: 0,
 
         title: const Text(
-          "UniLib",
+          "Universidade",
           style: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.w500,
             color: secondaryColor,
+            fontFamily: titleFont
           ),
         ),
 
@@ -206,7 +208,7 @@ class BibliotecaPage extends StatelessWidget {
               itemCount: 10,
 
               itemBuilder: (context, index) {
-                return _item("assets/teste.jpeg", "item Legall", 1);
+                return _item("assets/teste.jpeg", "item", 1, context);
               },
             ),
           ),
@@ -214,8 +216,16 @@ class BibliotecaPage extends StatelessWidget {
       ),
     );
   }
-  Widget _item(String imagePath, String title, int id){
-    return SizedBox(
+  Widget _item(String imagePath, String title, int id, BuildContext context){
+    return GestureDetector(
+      onTap: (){
+        //aqui chamamos o endpoint para pegar as informações do produto por base do id
+        final Produto produtoExemplo = new Produto(id: id, nome: "Nome do Produto", descricao: "descricao", preco: 14.55, imagem: "assets/teste.jpeg", emprestado: false, estado: "Bem conservado", quantidade: 2);
+        
+        Navigator.push(context, MaterialPageRoute(builder: (context) =>  ProdutoPage(produto: produtoExemplo,)));
+
+      },
+      child:SizedBox(
       width: 150,
       height: 200,
       child:Padding(padding: EdgeInsetsGeometry.all(5),
@@ -229,7 +239,7 @@ class BibliotecaPage extends StatelessWidget {
           child: Column(
           children: [
             Container(width: 150, height: 170, decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage(imagePath))
+              image: DecorationImage(image: NetworkImage('https://picsum.photos/150/170'))
               ),
             ),
             Text(title)
@@ -240,6 +250,7 @@ class BibliotecaPage extends StatelessWidget {
         )
       ),
       )
+    )
     );
   }
 }
