@@ -1,22 +1,22 @@
 
 class ServicoDeAutenticacao {
   final Map<String, Map<String, String>> _alunos = {
-    '0001': {
+    '001': {
       'nome': 'Maria Silva',
       'senha': '1234',
     },
-    '0002': {
+    '002': {
       'nome': 'João Oliveira',
       'senha': '5678',
     },
   };
 
-  // Verifica se a matrícula já existe
+  // ve se a matricula ja existe
   bool matriculaExiste(String matricula) {
     return _alunos.containsKey(matricula.trim());
   }
 
-  // Cadastra um novo aluno
+  // cadastra um novo aluno
   bool cadastrarAluno(
     String matricula,
     String nome,
@@ -43,7 +43,7 @@ class ServicoDeAutenticacao {
     return true;
   }
 
-  // Realiza o login do aluno
+  // faz o login do aluno
   String? fazerLogin(String matricula, String senha) {
     final aluno = _alunos[matricula.trim()];
 
