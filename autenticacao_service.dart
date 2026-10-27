@@ -1,6 +1,6 @@
 
-class AutenticacaoService {
-  final Map<String, Map<String, String>> alunos = {
+class ServicoDeAutenticacao {
+  final Map<String, Map<String, String>> _alunos = {
     '0001': {
       'nome': 'Maria Silva',
       'senha': '1234',
@@ -11,22 +11,50 @@ class AutenticacaoService {
     },
   };
 
+  // Verifica se a matrícula já existe
   bool matriculaExiste(String matricula) {
-    return alunos.containsKey(matricula);
-  }
-  
-String? fazerLogin(String matricula, String senha) {
-  final aluno = alunos[matricula];
-
-  if (aluno == null) {
-    return null;
+    return _alunos.containsKey(matricula.trim());
   }
 
-  if (aluno['senha'] != senha) {
-    return null;
+  // Cadastra um novo aluno
+  bool cadastrarAluno(
+    String matricula,
+    String nome,
+    String senha,
+  ) {
+    matricula = matricula.trim();
+    nome = nome.trim();
+
+    if (matricula.isEmpty ||
+        nome.isEmpty ||
+        senha.isEmpty) {
+      return false;
+    }
+
+    if (matriculaExiste(matricula)) {
+      return false;
+    }
+
+    _alunos[matricula] = {
+      'nome': nome,
+      'senha': senha,
+    };
+
+    return true;
   }
 
-  return aluno['nome'];
-}
+  // Realiza o login do aluno
+  String? fazerLogin(String matricula, String senha) {
+    final aluno = _alunos[matricula.trim()];
 
+    if (aluno == null) {
+      return null;
+    }
+
+    if (aluno['senha'] != senha) {
+      return null;
+    }
+
+    return aluno['nome'];
+  }
 }
