@@ -7,6 +7,9 @@ class Produto {
   final String estado;
   final int quantidade;
   final bool emprestado;
+  // Usados apenas no Acervo Alunos
+  final String alunoNome;
+  final String alunoContato;
 
   Produto({
     required this.id,
@@ -17,5 +20,7 @@ class Produto {
     required this.estado,
     required this.quantidade,
     required this.emprestado,
+    this.alunoNome = "",
+    this.alunoContato = "",
   });
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import  'Catalog/BibliotecaUniversidade/Catalog.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'Login.dart';
-import 'Catalog/BibliotecaUniversidade/Catalog.dart';
 class CadastroPage extends StatefulWidget {
   const CadastroPage({super.key});
    @override
@@ -45,7 +44,6 @@ class _CadastroPageState extends State<CadastroPage>{
   @override
   Widget build(BuildContext context) {
     const String backgroundPath = "assets/Login/background.png";
-    const String ImagePath = "assets/Login/perfil.png";
     const String title = "UniLib";
     const String titleFont = "Irish";
     final cpfFormatter = MaskTextInputFormatter(
@@ -176,7 +174,7 @@ class _CadastroPageState extends State<CadastroPage>{
                     SizedBox(height:10),
                     SizedBox(width: 250,
                     height: 50,
-                    child:ElevatedButton(onPressed:(){camposValidos ? Navigator.push(context, MaterialPageRoute(builder: (context) => const BibliotecaPage(),),) : null;}, 
+                    child:ElevatedButton(onPressed:(){camposValidos ? Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const BibliotecaPage(),), (route) => false,) : null;}, 
                     child: const Text("Criar Conta", style: TextStyle(color: Colors.white, fontWeight: FontWeight(700)),), 
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromRGBO(103, 80, 164, 1),

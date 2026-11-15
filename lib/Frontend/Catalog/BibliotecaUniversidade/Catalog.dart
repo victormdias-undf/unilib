@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ProdutoEspec.dart';
 import '../../../Assets/produto.dart';
+import '../biblioAlunos/CatalogAlunos.dart';
 class BibliotecaPage extends StatelessWidget {
   const BibliotecaPage({super.key});
 
@@ -28,19 +29,31 @@ class BibliotecaPage extends StatelessWidget {
         ),
 
         actions: [
-          IconButton(
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text("Menu selecionado"),
-                ),
-              );
-            },
+          PopupMenuButton<String>(
             icon: const Icon(
               Icons.menu,
               color: secondaryColor,
               size: 30,
             ),
+            color: primaryColor,
+            onSelected: (opcao) {
+              if (opcao == "Acervo Alunos") {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const AcervoAlunosPage()));
+              } else if (opcao != "Universidade") {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("$opcao em breve"),
+                  ),
+                );
+              }
+            },
+            itemBuilder: (context) => [
+              _menuItem("Universidade", Icons.account_balance, secondaryColor),
+              _menuItem("Acervo Alunos", Icons.groups, secondaryColor),
+              _menuItem("Fórum", Icons.forum, secondaryColor),
+              _menuItem("Protocolo", Icons.description, secondaryColor),
+              _menuItem("Perfil", Icons.person, secondaryColor),
+            ],
           ),
 
           const SizedBox(width: 10),
@@ -169,6 +182,19 @@ class BibliotecaPage extends StatelessWidget {
     );
   }
 
+
+  PopupMenuItem<String> _menuItem(String texto, IconData icone, Color cor) {
+    return PopupMenuItem<String>(
+      value: texto,
+      child: Row(
+        children: [
+          Icon(icone, color: cor),
+          const SizedBox(width: 10),
+          Text(texto, style: TextStyle(color: cor, fontWeight: FontWeight.w600)),
+        ],
+      ),
+    );
+  }
 
   Widget _buildCategory(String title, Color placeholderColor) {
     return Padding(
