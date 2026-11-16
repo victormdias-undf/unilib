@@ -7,7 +7,7 @@ void main() {
   // CPF de exemplo para testes.
   const cpfTeste = '52998224725';
 
-  // TESTE 1: VALIDAÇÃO DO CPF
+  // TESTE 1: CPF
   test('CPF deve ser válido', () {
     expect(
       ServicoAutenticacao.cpfValido(cpfTeste),
@@ -20,7 +20,7 @@ void main() {
     );
   });
 
-  // TESTE 2: E-MAIL OBRIGATÓRIO
+  // TESTE 2: EMAIL 
   test('E-mail é obrigatório', () async {
     final servico = ServicoAutenticacao();
 
@@ -36,7 +36,7 @@ void main() {
     );
   });
 
-  // TESTE 3: SENHA CURTA
+  // TESTE 3: SENHA 
   test('Senha de 3 caracteres é recusada', () async {
     final servico = ServicoAutenticacao();
 
