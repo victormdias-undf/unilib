@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'biblioteca_geral.dart';
 
 import 'servico_autenticacao.dart';
 
@@ -159,6 +160,19 @@ class _PaginaEntradaState extends State<PaginaEntrada> {
 
   @override
   Widget build(BuildContext context) {
+
+if (_usuario != null) {
+  return PaginaBibliotecaGeral(
+    aoSair: () {
+      setState(() {
+        _usuario = null;
+        _cpf.clear();
+        _senha.clear();
+      });
+    },
+  );
+}
+
     return Scaffold(
       backgroundColor: const Color(0xFFF5F6FA),
       body: SafeArea(
@@ -239,7 +253,7 @@ class _PaginaEntradaState extends State<PaginaEntrada> {
               controller: _email,
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
-                labelText: 'E-mail (obrigatório)',
+                labelText: 'E-mail',
               ),
               validator: (texto) =>
                   ServicoAutenticacao.emailValido(
