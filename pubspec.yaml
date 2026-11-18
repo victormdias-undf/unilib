@@ -37,6 +37,7 @@ dependencies:
   shelf: ^1.4.2
   shelf_router: ^1.1.5
   supabase_flutter: ^2.18.3
+  flutter_dotenv: ^6.0.2
 
 dev_dependencies:
   flutter_test:
@@ -61,8 +62,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+     - .env
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
