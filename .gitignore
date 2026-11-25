@@ -49,3 +49,6 @@ app.*.map.json
 
 # Supabase CLI
 supabase/.temp/
+
+# Variáveis de ambiente
+.env

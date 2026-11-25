@@ -1,0 +1,6 @@
+{
+    "cmake.ignoreCMakeListsMissing": true,
+    "json.schemaDownload.trustedDomains": {
+        "https://supabase.com/schemas/": true
+    }
+}
